@@ -1,0 +1,170 @@
+{% extends 'myapp/base.html' %} {% load static %} {% block title %} {{title}} {% endblock %} {% block body %} 
+
+<div class="container" style="margin-top: 100px;">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row" style="margin-left: 80px; margin-right: 80px;">
+
+                    {% for course in courses %}
+                    <div class="col-3">
+                        <div class="card" style="width: 18rem; align-items: center;">
+                            <img src="/static/myapp/img/{{course.image}}" class="card-img-top" alt="...">
+
+                            <div class="card-body">
+                                <h5 class="card-title">{{course.title}}</h5>
+                                <p class="card-text">{{course.description|slice:":50"}}..</p>
+                                <a href="/courses/{{course.id}}" class="btn btn-primary" style="margin-left: 70px;">Start</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<!-- <div class="container" style="margin-top: 100px;">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row" style="margin-left: 80px; margin-right: 80px;">
+                    <div class="col-3">
+                        <div class="card" style="width: 16rem; align-items: center;">
+                            <img src="{% static 'myapp/img/python.png' %}" class="card-img-top" alt="..." style="width: 10rem;">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Python Programming</h5>
+                                <p class="card-text">Python is a popular programming language. Python can be used on a server to create web applications.</p>
+                                <a href="/courses/python" class="btn btn-primary" style="margin-left: 70px;">Start</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="width: 16rem; align-items: center;">
+                            <img src="{% static 'myapp/img/django.png' %}" class="card-img-top" alt="..." style="width: 16rem; height: 10rem;">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Django Framework</h5>
+                                <p class="card-text">Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.</p>
+                                <a href="/courses/django" class="btn btn-primary" style="margin-left: 80px;">Start</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="width: 16rem; align-items: center;">
+                            <img src="{% static 'myapp/img/javascript.webp' %}" class="card-img-top" alt="..." style="width: 16rem; height: 7rem;">
+
+                            <div class="card-body">
+                                <h5 class="card-title">JavaScript</h5>
+                                <p class="card-text">JavaScript is the world's most popular programming language. JavaScript is the programming language of the Web. JavaScript is easy to learn.</p>
+                                <a href="/courses/javascript" class="btn btn-primary" style="margin-left: 70px;">Start</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="width: 16rem; align-items: center;">
+                            <img src="{% static 'myapp/img/sql.webp' %}" class="card-img-top" alt="..." style="width: 16rem; height: 7rem;">
+
+                            <div class="card-body">
+                                <h5 class="card-title">SQL</h5>
+                                <p class="card-text">SQL is a database computer language designed for the retrieval and management of data in a relational database. SQL stands for Structured Query Language.</p>
+                                <a href="/courses/sql" class="btn btn-primary" style="margin-left: 80px;">Start</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="row" style="margin-left: 80px; margin-right: 80px;">
+                    <div class="col-3">
+                        <div class="card" style="width: 16rem; align-items: center;">
+                            <img src="{% static 'myapp/img/html.png' %}" class="card-img-top" alt="..." style="width: 10rem;">
+
+                            <div class="card-body">
+                                <h5 class="card-title">HTML</h5>
+                                <p class="card-text">HTML is the standard markup language for Web pages. With HTML you can create your own Website.</p>
+                                <a href="/courses/html" class="btn btn-primary" style="margin-left: 70px;">Start</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="width: 16rem; align-items: center;">
+                            <img src="{% static 'myapp/img/css.png' %}" class="card-img-top" alt="..." style="width: 16rem; height: 10rem;">
+
+                            <div class="card-body">
+                                <h5 class="card-title">CSS</h5>
+                                <p class="card-text">CSS is the language we use to style an HTML document. CSS describes how HTML elements should be displayed.</p>
+                                <a href="/courses/css" class="btn btn-primary" style="margin-left: 80px;">Start</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="width: 16rem; align-items: center;">
+                            <img src="{% static 'myapp/img/java.gif' %}" class="card-img-top" alt="..." style="width: 16rem; height: 7rem;">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Java</h5>
+                                <p class="card-text">Java is a popular programming language. Java is used to develop mobile apps, web apps, desktop apps, games and much more.</p>
+                                <a href="/courses/java" class="btn btn-primary" style="margin-left: 70px;">Start</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="width: 16rem; align-items: center;">
+                            <img src="{% static 'myapp/img/c++.png' %}" class="card-img-top" alt="..." style="width: 16rem; height: 7rem;">
+
+                            <div class="card-body">
+                                <h5 class="card-title">C/C++</h5>
+                                <p class="card-text">C++ is a popular programming language. C++ is used to create computer programs, and is one of the most used language in game development.</p>
+                                <a href="/courses/c++" class="btn btn-primary" style="margin-left: 80px;">Start</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div> -->
+
+{% endblock %}
